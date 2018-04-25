@@ -37,10 +37,10 @@ s1.clear()
 s2.clear()
 s3.clear()
 s4.clear()
-s1.message("Screen\nOne")
-s2.message("Screen\nTwo")
-s3.message("Screen\nThree")
-s4.message("Screen\nFour")
+s1.message("Screen One \nIt's")
+s2.message("Screen Two\nTime")
+s3.message("Screen Three\nFor")
+s4.message("Screen Four\nBed")
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
