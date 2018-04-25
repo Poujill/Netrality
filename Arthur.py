@@ -13,14 +13,14 @@ lcd_columns     =16
 lcd_rows        =2
 
 #Screen 1
-s1_rs           =25
-s1_en           =24
+s1_rs           =21
+s1_en           =20
 #Screen 2
-s2_rs           =26
-s2_en           =19
+s2_rs           =25
+s2_en           =24
 #Screen 3
-s3_rs           =16
-s3_en           =12
+s3_rs           =26
+s3_en           =19
 #Screen4
 s4_rs           =6
 s5_en           =5
