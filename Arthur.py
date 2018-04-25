@@ -23,7 +23,7 @@ s3_rs           =26
 s3_en           =19
 #Screen4
 s4_rs           =6
-s5_en           =5
+s4_en           =5
 
 #Initialize Screens
 s1 = LCD.Adafruit_CharLCD(s1_rs, s1_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
