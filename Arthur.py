@@ -158,48 +158,61 @@ def clearScreens():
     s2.clear()
     s3.clear()
     s4.clear()
-    
+
+def printInventory():
+    clearScrees()
+    printScreen(1, "Money: "+money"\nSocial Media: "+socMed)
+    printScreen(2, "Gaming: "+gaming"\nE-mail: "+comm)
+    printScreen(3, "Shop: "+shop"\nStreaming: "+streaming)
+    printScreen(4, "News: "+News"\nWasting Time: "+socMed)
 
 while startup:
     if ser.in_waiting > 0:
         message = ser.readline(20).decode().rstrip()
-        if message.substring(0,2) == "ISP":
-            message = message.substring(4)
-            if message == "Eternity":
-                ISP = "Eternity Bond"
-                
-            if message == "Radio":
-                ISP = "RADIO ORG"
-                newsMult = 2
-                shopMult = 2
-                streamCost = True
+        changePlayer(message)
+        if player == 1:
+            if message.substring[:3] == "ISP":
+                message = message[4:]
+                if message == "Eternity":
+                    ISP = "Eternity Bond"
+                    
+                if message == "Radio":
+                    ISP = "RADIO ORG"
+                    newsMult = 2
+                    shopMult = 2
+                    streamCost = True
 
-            if message == "RB":
-                ISP = "RB&B"
-                streamMult = 2
-                wastingMult = 2
-                gameCost = True
+                if message == "RB":
+                    ISP = "RB&B"
+                    streamMult = 2
+                    wastingMult = 2
+                    gameCost = True
 
-            if message == "URL":
-                ISP = "URL-STREAM"
-                streamMult = 2
-                gameMult = 2
-                wastingMult = 2
-                newsCost = True
-                socCost = True
+                if message == "URL":
+                    ISP = "URL-STREAM"
+                    streamMult = 2
+                    gameMult = 2
+                    wastingMult = 2
+                    newsCost = True
+                    socCost = True
 
-            if message == "Space":
-                ISP = "SPACE ALERT\nRADIO"
-                socMult = 2
-                newsMult = 2
-                shopCost = True
+                if message == "Space":
+                    ISP = "SPACE ALERT\nRADIO"
+                    socMult = 2
+                    newsMult = 2
+                    shopCost = True
 
-            clearScreens()
-            printScreen(1,"Your Internet\nService Privider")
-            printScreen(2,"Is now"+str(ISP))
-            startup = False
-            time.sleep(5.0)
-            
+                clearScreens()
+                printScreen(1,"Your Internet\nService Privider")
+                printScreen(2,"Is now\n"+str(ISP))
+                startup = False
+                time.sleep(10.0)
+                printInventory()
+                publish.single(lancelot, "STARTUP", hostname=192.168.1)
+                publish.single(gawain, "STARTUP", hostname=192.168.1)
+                publish.single(percival, "STARTUP", hostname=192.168.1)
+            else:
+                publish.single(MQTT_PATH, message, hostname=MQTT_SERVER)
             
         
 while gameRunning:

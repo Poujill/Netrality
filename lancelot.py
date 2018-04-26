@@ -100,6 +100,13 @@ def clearScreens():
     s3.clear()
     s4.clear()
 
+def printInventory():
+    clearScrees()
+    printScreen(1, "Money: "+money"\nSocial Media: "+socMed)
+    printScreen(2, "Gaming: "+gaming"\nE-mail: "+comm)
+    printScreen(3, "Shop: "+shop"\nStreaming: "+streaming)
+    printScreen(4, "News: "+News"\nWasting Time: "+socMed)
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     #print("Connected with result code "+str(rc))
@@ -137,40 +144,43 @@ def on_message(client, userdata, msg):
         money  += 1
         printScreen(4,wasting+'\n'+money)
 
-    if message.substring(0,2) == "ISP":
-            message = message.substring(4)
+    if message.substring[:3] == "ISP":
+            message = message[4:]
             if message == "Eternity":
-                global ISP = "Eternity Bond"
+                ISP = "Eternity Bond"
                 
             if message == "Radio":
-                global ISP = "RADIO ORG"
-                global newsMult = 2
-                global shopMult = 2
-                global streamCost = True
+                ISP = "RADIO ORG"
+                newsMult = 2
+                shopMult = 2
+                streamCost = True
 
             if message == "RB":
-                global ISP = "RB&B"
-                global streamMult = 2
-                global wastingMult = 2
-                global gameCost = True
+                ISP = "RB&B"
+                streamMult = 2
+                wastingMult = 2
+                gameCost = True
 
             if message == "URL":
-                global ISP = "URL-STREAM"
-                global streamMult = 2
-                global gameMult = 2
-                global wastingMult = 2
-                global newsCost = True
-                global socCost = True
+                ISP = "URL-STREAM"
+                streamMult = 2
+                gameMult = 2
+                wastingMult = 2
+                newsCost = True
+                socCost = True
 
             if message == "Space":
-                global ISP = "SPACE ALERT\nRADIO"
-                global socMult = 2
-                global newsMult = 2
-                global shopCost = True
+                ISP = "SPACE ALERT\nRADIO"
+                socMult = 2
+                newsMult = 2
+                shopCost = True
 
             clearScreens()
             printScreen(1,"Your Internet\nService Privider")
             printScreen(2,"Is now"+str(ISP))
+
+        if messsage == "STARTUP":
+            printInventory()
 
 
 if !gameRunning:
