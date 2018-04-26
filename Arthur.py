@@ -34,10 +34,10 @@ s1.clear()
 s2.clear()
 s3.clear()
 s4.clear()
-s1.message("Screen\nOne")
-s2.message("Screen\nTwo")
-s3.message("Screen\nThree")
-s4.message("Screen\nFour")
+s1.message("Welcome To\nNetrality")
+s2.message("A Board Game By\nMatthew Evers")
+s3.message("Senior Capstone\nProject")
+s4.message("       :)\n       :P")
 
 #MQTT CONFIGURATION
 MQTT_PATH = ""
@@ -45,18 +45,40 @@ MQTT_SERVER = ""
 ser = serial.Serial("COM3", 9600)
 
 gameRunning = True
+startup = True
 player = 0
 
 #GAME VARIABLES
-var1 = 0
-var2 = 0
-var3 = 0
-var4 = 0
-var5 = 0
-var6 = 0
-var7 = 0
-var8 = 0
+socMed = 0
+gaming = 0
+comm = 0
+shop = 0
+stream = 0
+news = 0
+wasting = 0
+money = 0
 
+points = 0
+
+#ISP Multipliers
+ISP = ""
+socMult = 1
+gameMult = 1
+commMult = 1
+shopMult = 1
+streamMult = 1
+newsMult = 1
+wastingMult = 1
+
+#ISP COSTS
+
+socCost = False
+gameCost = False
+commCost = False
+shopCost = False
+streamCost = False
+newsCost = False
+wastingCost = False
 
 ser.flushInput()
 
@@ -85,40 +107,98 @@ def changePlayer(msg):
         #publish.single(MQTT_PATH, "P4", hostname=MQTT_SERVER)
 
 def pieceOnBoard(msg):
-    if msg == "Zero":
-        var1  += 1
-        s1.clear()
-        s1.message(var1+'\n'+var2)
-    if msg == "One":
-        var2  += 1
-        s1.clear()
-        s1.message(var1+'\n'+var2)
-    if msg == "Two":
-        var3  += 1
-        s2.clear()
-        s2.message(var3+'\n'+var4)
-    if msg == "Three":
-        var4  += 1
-        s2.clear()
-        s2.message(var3+'\n'+var4)
-    if msg == "Four":
-        var5  += 1
-        s3.clear()
-        s3.message(var5+'\n'+var6)
-    if msg == "Five":
-        var6  += 1
-        s3.clear()
-        s3.message(var5+'\n'+var6)
-    if msg == "Six":
-        var7  += 1
-        s4.clear()
-        s4.message(var7+'\n'+var8)
-    if msg == "Seven":
-        var8  += 1
-        s4.clear()
-        s4.message(var7+'\n'+var8)
+     if temp == "Zero":
+        socMed  += 1
+        printScreen(1,socMed+'\n'+gaming)
+    if temp == "One":
+        gaming  += 1
+        printScreen(1,socMed+'\n'+gaming)
+    if temp == "Two":
+        comm  += 1
+        printScreen(2,comm+'\n'+shop)
+    if temp == "Three":
+        shop  += 1
+        printScreen(2,comm+'\n'+shop)
+    if temp == "Four":
+        stream  += 1
+        printScreen(3,stream+'\n'+news)
+    if temp == "Five":
+        news  += 1
+        printScreen(3,stream+'\n'+news)
+    if temp == "Six":
+        wasting  += 1
+        printScreen(4,wasting+'\n'+money)
+    if temp == "Seven":
+        money  += 1
+        printScreen(4,wasting+'\n'+money)
 
-#def printScreen():
+    ##CARDS PLAYED    
+    if msg == 
+
+def printScreen(screen, message):
+    if screen == 1:
+        s1.clear()
+        s1.message(message)
+
+    if screen == 2:
+        s2.clear()
+        s2.message(message)
+
+    if screen == 3:
+        s3.clear()
+        s3.message(message)
+
+    if screen == 4:
+        s4.clear()
+        s4.message();
+
+
+def clearScreens():
+    s1.clear()
+    s2.clear()
+    s3.clear()
+    s4.clear()
+    
+
+while startup();
+    if ser.in_waiting > 0:
+        message = ser.readline(20).decode().rstrip()
+        if message.substring(0,2) == "ISP":
+            message = message.substring(4)
+            if message == "Eternity":
+                global ISP = "Eternity Bond"
+                
+            if message == "Radio":
+                global ISP = "RADIO ORG"
+                global newsMult = 2
+                global shopMult = 2
+                global streamCost = True
+
+            if message == "RB":
+                global ISP = "RB&B"
+                global streamMult = 2
+                global wastingMult = 2
+                global gameCost = True
+
+            if message == "URL":
+                global ISP = "URL-STREAM"
+                global streamMult = 2
+                global gameMult = 2
+                global wastingMult = 2
+                global newsCost = True
+                global socCost = True
+
+            if message == "Space":
+                global ISP = "SPACE ALERT\nRADIO"
+                global socMult = 2
+                global newsMult = 2
+                global shopCost = True
+
+            clearScreens()
+            printScreen(1,"Your Internet\nService Privider")
+            printScreen(2,"Is now"+str(ISP))
+            
+            
         
 while gameRunning:
     if ser.in_waiting > 0:
