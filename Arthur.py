@@ -150,7 +150,7 @@ def printScreen(screen, message):
 
     if screen == 4:
         s4.clear()
-        s4.message();
+        s4.message(message);
 
 
 def clearScreens():
@@ -160,11 +160,11 @@ def clearScreens():
     s4.clear()
 
 def printInventory():
-    clearScrees()
-    printScreen(1, "Money: "+money"\nSocial Media: "+socMed)
-    printScreen(2, "Gaming: "+gaming"\nE-mail: "+comm)
-    printScreen(3, "Shop: "+shop"\nStreaming: "+streaming)
-    printScreen(4, "News: "+News"\nWasting Time: "+socMed)
+    clearScreens()
+    printScreen(1, "Money: "+str(money)+"\nSocial Media: "+str(socMed))
+    printScreen(2, "Gaming: "+str(gaming)+"\nE-mail: "+str(comm))
+    printScreen(3, "Shop: "+str(shop)+"\nStreaming: "+str(stream))
+    printScreen(4, "News: "+str(news)+"\nWasting Time: "+str(wasting))
 
 while startup:
     if ser.in_waiting > 0:
