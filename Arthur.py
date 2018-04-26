@@ -42,7 +42,7 @@ s4.message("       :)\n       :P")
 #MQTT CONFIGURATION
 MQTT_PATH = ""
 MQTT_SERVER = ""
-ser = serial.Serial("COM3", 9600)
+ser = serial.Serial("/dev/ttyACM0", 9600)
 
 gameRunning = True
 startup = True
@@ -197,6 +197,8 @@ while startup:
             clearScreens()
             printScreen(1,"Your Internet\nService Privider")
             printScreen(2,"Is now"+str(ISP))
+            startup = False
+            time.sleep(5.0)
             
             
         
