@@ -107,7 +107,7 @@ def changePlayer(msg):
         #publish.single(MQTT_PATH, "P4", hostname=MQTT_SERVER)
 
 def pieceOnBoard(msg):
-     if temp == "Zero":
+    if temp == "Zero":
         socMed  += 1
         printScreen(1,socMed+'\n'+gaming)
     if temp == "One":
@@ -133,7 +133,7 @@ def pieceOnBoard(msg):
         printScreen(4,wasting+'\n'+money)
 
     ##CARDS PLAYED    
-    if msg == 
+    #if msg == 
 
 def printScreen(screen, message):
     if screen == 1:
@@ -160,39 +160,39 @@ def clearScreens():
     s4.clear()
     
 
-while startup();
+while startup:
     if ser.in_waiting > 0:
         message = ser.readline(20).decode().rstrip()
         if message.substring(0,2) == "ISP":
             message = message.substring(4)
             if message == "Eternity":
-                global ISP = "Eternity Bond"
+                ISP = "Eternity Bond"
                 
             if message == "Radio":
-                global ISP = "RADIO ORG"
-                global newsMult = 2
-                global shopMult = 2
-                global streamCost = True
+                ISP = "RADIO ORG"
+                newsMult = 2
+                shopMult = 2
+                streamCost = True
 
             if message == "RB":
-                global ISP = "RB&B"
-                global streamMult = 2
-                global wastingMult = 2
-                global gameCost = True
+                ISP = "RB&B"
+                streamMult = 2
+                wastingMult = 2
+                gameCost = True
 
             if message == "URL":
-                global ISP = "URL-STREAM"
-                global streamMult = 2
-                global gameMult = 2
-                global wastingMult = 2
-                global newsCost = True
-                global socCost = True
+                ISP = "URL-STREAM"
+                streamMult = 2
+                gameMult = 2
+                wastingMult = 2
+                newsCost = True
+                socCost = True
 
             if message == "Space":
-                global ISP = "SPACE ALERT\nRADIO"
-                global socMult = 2
-                global newsMult = 2
-                global shopCost = True
+                ISP = "SPACE ALERT\nRADIO"
+                socMult = 2
+                newsMult = 2
+                shopCost = True
 
             clearScreens()
             printScreen(1,"Your Internet\nService Privider")
