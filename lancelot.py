@@ -151,43 +151,43 @@ def on_message(client, userdata, msg):
         money  += 1
         printInventory()
 
-    if message.substring[:3] == "ISP":
-            message = message[4:]
-            if message == "Eternity":
-                ISP = "Eternity Bond"
-                
-            if message == "Radio":
-                ISP = "RADIO ORG"
-                newsMult = 2
-                shopMult = 2
-                streamCost = True
+    if temp[:3] == "ISP":
+        message = temp[4:]
+        if message == "Eternity":
+            ISP = "Eternity Bond"
+            
+        if message == "Radio":
+            ISP = "RADIO ORG"
+            newsMult = 2
+            shopMult = 2
+            streamCost = True
 
-            if message == "RB":
-                ISP = "RB&B"
-                streamMult = 2
-                wastingMult = 2
-                gameCost = True
+        if message == "RB":
+            ISP = "RB&B"
+            streamMult = 2
+            wastingMult = 2
+            gameCost = True
 
-            if message == "URL":
-                ISP = "URL-STREAM"
-                streamMult = 2
-                gameMult = 2
-                wastingMult = 2
-                newsCost = True
-                socCost = True
+        if message == "URL":
+            ISP = "URL-STREAM"
+            streamMult = 2
+            gameMult = 2
+            wastingMult = 2
+            newsCost = True
+            socCost = True
 
-            if message == "Space":
-                ISP = "SPACE ALERT\nRADIO"
-                socMult = 2
-                newsMult = 2
-                shopCost = True
+        if message == "Space":
+            ISP = "SPACE ALERT\nRADIO"
+            socMult = 2
+            newsMult = 2
+            shopCost = True
 
-            clearScreens()
-            printScreen(1,"Your Internet\nService Privider")
-            printScreen(2,"Is now"+str(ISP))
-            printScreen(3,"Waiting for\nGame to start")
+        clearScreens()
+        printScreen(1,"Your Internet\nService Privider")
+        printScreen(2,"Is now"+str(ISP))
+        printScreen(3,"Waiting for\nGame to start")
 
-    if messsage == "STARTUP":
+    if temp == "STARTUP":
             clearScreens()
             printInventory()
 
