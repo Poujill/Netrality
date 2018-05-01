@@ -184,7 +184,7 @@ def on_message(client, userdata, msg):
 
         clearScreens()
         printScreen(1,"Your Internet\nService Privider")
-        printScreen(2,"Is now"+str(ISP))
+        printScreen(2,"Is now\n"+str(ISP))
         printScreen(3,"Waiting for\nGame to start")
 
     if temp == "STARTUP":
