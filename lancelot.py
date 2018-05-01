@@ -91,7 +91,7 @@ def printScreen(screen, message):
 
     if screen == 4:
         s4.clear()
-        s4.message();
+        s4.message(message);
 
 
 def clearScreens():
@@ -101,11 +101,11 @@ def clearScreens():
     s4.clear()
 
 def printInventory():
-    clearScrees()
-    printScreen(1, "Money: "+money"\nSocial Media: "+socMed)
-    printScreen(2, "Gaming: "+gaming"\nE-mail: "+comm)
-    printScreen(3, "Shop: "+shop"\nStreaming: "+streaming)
-    printScreen(4, "News: "+News"\nWasting Time: "+socMed)
+    clearScreens()
+    printScreen(1, "Money: "+str(money)+"\nSocial Media: "+str(socMed))
+    printScreen(2, "Gaming: "+str(gaming)+"\nE-mail: "+str(comm))
+    printScreen(3, "Shop: "+str(shop)+"\nStreaming: "+str(stream))
+    printScreen(4, "News: "+str(news)+"\nWasting Time: "+str(wasting))
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -119,30 +119,37 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     temp = msg.payload.decode()
 
-    if temp == "Zero":
-        socMed  += 1
-        printScreen(1,socMed+'\n'+gaming)
-    if temp == "One":
-        gaming  += 1
-        printScreen(1,socMed+'\n'+gaming)
-    if temp == "Two":
-        comm  += 1
-        printScreen(2,comm+'\n'+shop)
-    if temp == "Three":
-        shop  += 1
-        printScreen(2,comm+'\n'+shop)
-    if temp == "Four":
-        stream  += 1
-        printScreen(3,stream+'\n'+news)
-    if temp == "Five":
-        news  += 1
-        printScreen(3,stream+'\n'+news)
-    if temp == "Six":
-        wasting  += 1
-        printScreen(4,wasting+'\n'+money)
-    if temp == "Seven":
+    if temp == "soc":
+        socMed  += (1*socMult)
+        if(socCost): money -= 1
+        printInventory()
+    if temp == "game":
+        gaming  += (1*gameMult)
+        if(gameCost): money -= 1
+        printInventory()
+    if temp == "comm":
+        comm  += (1*commMult)
+        if(commCost): money -= 1
+        printInventory()
+    if temp == "shop":
+        shop  += (1*shopMult)
+        if(shopCost):money -= 1
+        printInventory()
+    if temp == "stream":
+        stream  += (1*streamMult)
+        if(streamCost): money -= 1
+        printInventory()
+    if temp == "news":
+        news  += (1*newsMult)
+        if(newsCost): money -= 1
+        printInventory()
+    if temp == "waste":
+        wasting  += (1*wastingMult)
+        if(wasteCost): money -= 1
+        printInventory()
+    if temp == "money":
         money  += 1
-        printScreen(4,wasting+'\n'+money)
+        printInventory()
 
     if message.substring[:3] == "ISP":
             message = message[4:]
@@ -178,12 +185,14 @@ def on_message(client, userdata, msg):
             clearScreens()
             printScreen(1,"Your Internet\nService Privider")
             printScreen(2,"Is now"+str(ISP))
+            printScreen(3,"Waiting for\nGame to start")
 
-        if messsage == "STARTUP":
+    if messsage == "STARTUP":
+            clearScreens()
             printInventory()
 
 
-if !gameRunning:
+if gameRunning == False:
     client.loop_stop()
 
  
