@@ -140,7 +140,7 @@ def pieceOnBoard(msg):
         money  += 1
     printInventory()
 
-def cardPlayed():
+def cardPlayed(msg):
     
     if msg[:6] == "points":
         if player == 1:
@@ -263,6 +263,7 @@ while gameRunning:
         message = ser.readline(20).decode().rstrip()
         #change the current player
         changePlayer(message)
+        cardPlayed(message)
         #if its player one(this machine) adjust screens/inventory
         if player == 1:
             pieceOnBoard(message)
